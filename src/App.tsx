@@ -3,12 +3,12 @@ import "./App.css";
 import { Heading } from "./components";
 import "core-js/stable";
 import "regenerator-runtime/runtime";
-import { useSpeechRecognition } from "react-speech-recognition";
+import SpeechRecognition , {useSpeechRecognition} from "react-speech-recognition";
 
 function App() {
   const [language, setLanguage] = useState("english");
-  const { transcript, listening } = useSpeechRecognition();
-  console.log(listening);
+  const { transcript, listening, browserSupportsSpeechRecognition} = useSpeechRecognition();
+  console.log(browserSupportsSpeechRecognition);
   return (
     <>
       <Heading text="Text Translator" />
@@ -21,7 +21,8 @@ function App() {
         />
         <button
           className="bg-teal-400"
-          onClick={() => alert(`Your language is ${language}`)}
+          onClick={() => {SpeechRecognition.startListening;
+          console.log("Recording",transcript)}}
         >
           Record
         </button>
