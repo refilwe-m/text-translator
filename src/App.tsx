@@ -21,8 +21,7 @@ function App() {
         />
         <button
           className="bg-teal-400"
-          onClick={() => {SpeechRecognition.startListening;
-          console.log("Recording",transcript)}}
+          onClick={()=>SpeechRecognition.startListening().then(R=>console.log(R))}
         >
           Record
         </button>
