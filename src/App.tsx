@@ -23,7 +23,7 @@ function App() {
           className="bg-teal-400"
           onClick={()=>SpeechRecognition.startListening().then(R=>console.log(R))}
         >
-          Record
+          Translate
         </button>
       </section>
 
