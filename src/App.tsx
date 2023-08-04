@@ -1,10 +1,14 @@
 import { useState } from "react";
 import "./App.css";
 import { Heading } from "./components";
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+import { useSpeechRecognition } from "react-speech-recognition";
 
 function App() {
   const [language, setLanguage] = useState("english");
-
+  const { transcript, listening } = useSpeechRecognition();
+  console.log(listening);
   return (
     <>
       <Heading text="Text Translator" />
@@ -19,15 +23,11 @@ function App() {
           className="bg-teal-400"
           onClick={() => alert(`Your language is ${language}`)}
         >
-          Translate
+          Record
         </button>
       </section>
 
-      <p>
-        I love peace and solitude.
-        <br /> I learn better in quietness and I prefer to watch the sky and
-        <br /> sing songs in my heart than to be in a loud city
-      </p>
+      <p>{transcript}</p>
     </>
   );
 }
